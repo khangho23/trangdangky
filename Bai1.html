@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <form name="frm1" onsubmit="return kiemtra()" class="col-6 mx-auto border border-primary">
+        <h4 class="m-0 p-2 text-center">THÊM NHÂN VIÊN</h4>
+        <div class="form-group">
+            <label>Mã SV</label>
+            <input type="text" name="masv" class="form-control bg-primary">
+        </div>
+        <div class="form-group">
+            <label>PS21158 - Hồ Hoàng Khang</label>
+            <input type="text" name="ht" class="form-control bg-warning">
+        </div>
+        <div class="form-group">
+            <label> Quốc tịch</label>
+            <select name="quoctich" class="form-control bg-info">
+        <option value="0">Quốc tịch</option>
+        <option value="1">Trung Quốc</option>
+        <option value="2">Việt Nam</option>
+        <option value="3">Hàn Quốc</option>
+    </select>
+        </div>
+        <div class="form-group">
+            <label> Ghi chú</label>
+            <textarea name="bosung" class="form-control bg-warning" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+            <div id="loi"></div>
+            <button class="btn btn-primary">Đăng ký</button>
+
+        </div>
+    </form>
+    <script>
+        function kiemtra() {
+            var masv = document.frm1.masv.value;
+            var hoten = document.frm1.ht.value;
+            var quoctich = document.frm1.quoctich.value;
+            var bosung = document.frm1.bosung.value;
+            var loi = "";
+            if (hoten == "") {
+                document.getElementById("loi").innerHTML = "Tên không được rỗng";
+            }
+            if (hoten.length < 3 || hoten.length > 30) {
+                loi = "Tên phải trong khoảng 5 đên 30 kí tự<br>";
+            }
+            if (masv == "") {
+                loi = loi + "Không có mã sv<br>";
+            }
+            if (quoctich == 0) {
+                loi = loi + "Chưa chọn quốc tịch<br>";
+            }
+            if (bosung.length < 10 || bosung.length > 65) {
+                loi = loi + "Bổ sung phải trong khoảng 10 đến 65 kí tự";
+            }
+            if (loi.length > 0) {
+                document.getElementById("loi").innerHTML = loi;
+            }
+            return false;
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
